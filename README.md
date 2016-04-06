@@ -10,3 +10,18 @@ Check the original documentation here:
 Include the gem in your Gemfile:
 
     gem 'intl-tel-input'
+
+
+Add the following to your application.js:
+
+```
+//= require intl-tel-input
+```
+
+Also add to your application.css:
+
+```
+/*
+ *= require intl-tel-input
+ */
+```
