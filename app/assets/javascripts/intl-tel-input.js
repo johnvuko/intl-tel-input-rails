@@ -264,10 +264,26 @@
                 var c = countries[i];
                 // open the list item
                 tmp += "<li class='country " + className + "' data-dial-code='" + c.dialCode + "' data-country-code='" + c.iso2 + "'>";
-                // add the flag
-                tmp += "<div class='flag-box'><div class='iti-flag " + c.iso2 + "'></div></div>";
-                // and the country name and dial code
-                tmp += "<span class='country-name'>" + c.name + "</span>";
+                if (AppConfig.school_country_id == 45 && c.iso2 == 'tw') {
+                    tmp += "<div class='flag-box'><div class='iti-flag blank'></div></div>";
+                    if (AppConfig.locale.substring(0, 3) == 'en-') {
+                        tmp += "<span class='country-name'>China (Taiwan)</span>";
+                    } else {
+                        tmp += "<span class='country-name'>中国 (台湾)</span>";
+                    }
+                } else {
+                    // add the flag
+                    tmp += "<div class='flag-box'><div class='iti-flag " + c.iso2 + "'></div></div>";
+                    if (AppConfig.school_country_id == 45 && AppConfig.locale.substring(0, 3) == 'en-' && c.iso2 == 'hk') {
+                        tmp += "<span class='country-name'>China (Hong Kong)</span>";
+                    } else if (AppConfig.school_country_id == 45 && AppConfig.locale.substring(0, 3) == 'en-' && c.iso2 == 'mo') {
+                        tmp += "<span class='country-name'>China (Macao)</span>";
+                    } else {
+                        // and the country name and dial code
+                        tmp += "<span class='country-name'>" + c.name + "</span>";
+                    }
+                }
+
                 tmp += "<span class='dial-code'>+" + c.dialCode + "</span>";
                 // close the list item
                 tmp += "</li>";
@@ -731,7 +747,12 @@
             if (this.selectedCountryData.iso2) {
                 this.defaultCountry = this.selectedCountryData.iso2;
             }
-            this.selectedFlagInner.attr("class", "iti-flag " + countryCode);
+            if (AppConfig.school_country_id == 45 && countryCode == 'tw') {
+                this.selectedFlagInner.attr("class", "iti-flag blank");
+            } else {
+                this.selectedFlagInner.attr("class", "iti-flag " + countryCode);
+            }
+
             // update the selected country's title attribute
             var title = countryCode ? this.selectedCountryData.name + ": +" + this.selectedCountryData.dialCode : "Unknown";
             this.selectedFlagInner.parent().attr("title", title);
