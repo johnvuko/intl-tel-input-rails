@@ -26,7 +26,7 @@ $selectedFlagWidth: $flagWidth + (2 * $flagPadding) !default;
 $selectedFlagArrowWidth: $flagWidth + $flagPadding + $arrowWidth + (2 * $arrowPadding) !default;
 
 // image related variables
-$flagsImagePath: "intl-tel-input/" !default;
+$flagsImagePath: "../img/" !default;
 $flagsImageName: "flags" !default;
 $flagsImageExtension: "png" !default;
 
