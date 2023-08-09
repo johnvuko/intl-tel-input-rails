@@ -1,5 +1,5 @@
 /*
- * International Telephone Input v18.1.8
+ * International Telephone Input v18.2.1
  * https://github.com/jackocnr/intl-tel-input.git
  * Licensed under the MIT license
  */
@@ -1457,6 +1457,12 @@
                 return window.intlTelInputUtils ? intlTelInputUtils.isValidNumber(val, this.selectedCountryData.iso2) : null;
             }
         }, {
+            key: "isPossibleNumber",
+            value: function isPossibleNumber() {
+                var val = this._getFullNumber().trim();
+                return window.intlTelInputUtils ? intlTelInputUtils.isPossibleNumber(val, this.selectedCountryData.iso2) : null;
+            }
+        }, {
             key: "setCountry",
             value: function setCountry(originalCountryCode) {
                 var countryCode = originalCountryCode.toLowerCase();
@@ -1537,7 +1543,7 @@
     // default options
     intlTelInputGlobals.defaults = defaults;
     // version
-    intlTelInputGlobals.version = "18.1.8";
+    intlTelInputGlobals.version = "18.2.1";
     var pluginName = "intlTelInput";
     // A really lightweight plugin wrapper around the constructor,
     // preventing against multiple instantiations
